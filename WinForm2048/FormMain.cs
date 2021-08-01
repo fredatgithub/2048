@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using WinForm2048.Properties;
@@ -22,6 +23,7 @@ namespace WinForm2048
     public readonly Dictionary<string, string> LanguageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+    int[,] board = new int[9, 9];
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -710,6 +712,140 @@ namespace WinForm2048
       {
         // do something
       }
+    }
+
+    private void ButtonStartNewGame_Click(object sender, EventArgs e)
+    {
+      button1.Text = string.Empty;
+      button2.Text = string.Empty;
+      button3.Text = string.Empty;
+      button4.Text = string.Empty;
+      button5.Text = string.Empty;
+      button6.Text = string.Empty;
+      button7.Text = string.Empty;
+      button8.Text = string.Empty;
+      button9.Text = string.Empty;
+      button10.Text = string.Empty;
+      button11.Text = string.Empty;
+      button12.Text = string.Empty;
+      button13.Text = string.Empty;
+      button14.Text = string.Empty;
+      button15.Text = string.Empty;
+      button16.Text = string.Empty;
+      button17.Text = string.Empty;
+      button18.Text = string.Empty;
+      button19.Text = string.Empty;
+      button20.Text = string.Empty;
+      button21.Text = string.Empty;
+      button22.Text = string.Empty;
+      button23.Text = string.Empty;
+      button24.Text = string.Empty;
+      button25.Text = string.Empty;
+      button26.Text = string.Empty;
+      button27.Text = string.Empty;
+      button28.Text = string.Empty;
+      button29.Text = string.Empty;
+      button30.Text = string.Empty;
+      button31.Text = string.Empty;
+      button32.Text = string.Empty;
+      button33.Text = string.Empty;
+      button34.Text = string.Empty;
+      button35.Text = string.Empty;
+      button36.Text = string.Empty;
+      button37.Text = string.Empty;
+      button38.Text = string.Empty;
+      button39.Text = string.Empty;
+      button40.Text = string.Empty;
+      button41.Text = string.Empty;
+      button42.Text = string.Empty;
+      button43.Text = string.Empty;
+      button44.Text = string.Empty;
+      button45.Text = string.Empty;
+      button46.Text = string.Empty;
+      button47.Text = string.Empty;
+      button48.Text = string.Empty;
+      button49.Text = string.Empty;
+      button50.Text = string.Empty;
+      button51.Text = string.Empty;
+      button52.Text = string.Empty;
+      button53.Text = string.Empty;
+      button54.Text = string.Empty;
+      button55.Text = string.Empty;
+      button56.Text = string.Empty;
+      button57.Text = string.Empty;
+      button58.Text = string.Empty;
+      button59.Text = string.Empty;
+      button60.Text = string.Empty;
+      button61.Text = string.Empty;
+      button62.Text = string.Empty;
+      button63.Text = string.Empty;
+      button64.Text = string.Empty;
+
+      // Initialization of the board
+      for (int i = 1; i < 9; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          board[i, j] = 0;
+        }
+      }
+
+      // generate a new number
+      int randomNumber = GenerateNewRandomNumber();
+      int line = int.Parse(GenerateNewPosition().Split(':')[0]);
+      int column = int.Parse(GenerateNewPosition().Split(':')[1]);
+      board[line, column] = randomNumber;
+
+    }
+
+    private int GenerateNewRandomNumber()
+    {
+      int result = 3;
+      do
+      {
+        result = GenerateRndNumberUsingCrypto(2, 4);
+      } while (result == 2 || result == 4);
+
+      return result;
+    }
+
+    private string GenerateNewPosition()
+    {
+      string result = "0:0";
+      int column = GenerateRndNumberUsingCrypto(1, 8);
+      int line = GenerateRndNumberUsingCrypto(1, 8);
+      do
+      {
+        column = GenerateRndNumberUsingCrypto(1, 8);
+        line = GenerateRndNumberUsingCrypto(1, 8);
+      } while (board[line, column] != 0);
+
+      result = $"{line}:{column}";
+      return result;
+    }
+
+    public static int GenerateRndNumberUsingCrypto(int min, int max)
+    {
+      if (max > 255 || min < 0)
+      {
+        return 0;
+      }
+
+      if (max == min)
+      {
+        return min;
+      }
+
+      int result;
+      var crypto = new RNGCryptoServiceProvider();
+      byte[] randomNumber = new byte[1];
+      do
+      {
+        crypto.GetBytes(randomNumber);
+        result = randomNumber[0];
+      } while (result < min || result > max);
+
+      return result;
     }
   }
 }
