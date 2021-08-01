@@ -476,7 +476,7 @@ namespace WinForm2048
       // 
       // button6
       // 
-      this.button6.Location = new System.Drawing.Point(319, 99);
+      this.button6.Location = new System.Drawing.Point(316, 99);
       this.button6.Name = "button6";
       this.button6.Size = new System.Drawing.Size(45, 45);
       this.button6.TabIndex = 7;
@@ -484,7 +484,7 @@ namespace WinForm2048
       // 
       // button7
       // 
-      this.button7.Location = new System.Drawing.Point(370, 99);
+      this.button7.Location = new System.Drawing.Point(367, 99);
       this.button7.Name = "button7";
       this.button7.Size = new System.Drawing.Size(45, 45);
       this.button7.TabIndex = 8;
@@ -492,7 +492,7 @@ namespace WinForm2048
       // 
       // button8
       // 
-      this.button8.Location = new System.Drawing.Point(421, 99);
+      this.button8.Location = new System.Drawing.Point(418, 99);
       this.button8.Name = "button8";
       this.button8.Size = new System.Drawing.Size(45, 45);
       this.button8.TabIndex = 9;
@@ -540,7 +540,7 @@ namespace WinForm2048
       // 
       // button14
       // 
-      this.button14.Location = new System.Drawing.Point(319, 150);
+      this.button14.Location = new System.Drawing.Point(316, 150);
       this.button14.Name = "button14";
       this.button14.Size = new System.Drawing.Size(45, 45);
       this.button14.TabIndex = 12;
@@ -548,7 +548,7 @@ namespace WinForm2048
       // 
       // button15
       // 
-      this.button15.Location = new System.Drawing.Point(370, 150);
+      this.button15.Location = new System.Drawing.Point(367, 150);
       this.button15.Name = "button15";
       this.button15.Size = new System.Drawing.Size(45, 45);
       this.button15.TabIndex = 11;
@@ -556,7 +556,7 @@ namespace WinForm2048
       // 
       // button16
       // 
-      this.button16.Location = new System.Drawing.Point(421, 150);
+      this.button16.Location = new System.Drawing.Point(418, 150);
       this.button16.Name = "button16";
       this.button16.Size = new System.Drawing.Size(45, 45);
       this.button16.TabIndex = 10;
@@ -604,7 +604,7 @@ namespace WinForm2048
       // 
       // button22
       // 
-      this.button22.Location = new System.Drawing.Point(319, 201);
+      this.button22.Location = new System.Drawing.Point(316, 201);
       this.button22.Name = "button22";
       this.button22.Size = new System.Drawing.Size(45, 45);
       this.button22.TabIndex = 20;
@@ -612,7 +612,7 @@ namespace WinForm2048
       // 
       // button23
       // 
-      this.button23.Location = new System.Drawing.Point(370, 201);
+      this.button23.Location = new System.Drawing.Point(367, 201);
       this.button23.Name = "button23";
       this.button23.Size = new System.Drawing.Size(45, 45);
       this.button23.TabIndex = 19;
@@ -620,7 +620,7 @@ namespace WinForm2048
       // 
       // button24
       // 
-      this.button24.Location = new System.Drawing.Point(421, 201);
+      this.button24.Location = new System.Drawing.Point(418, 201);
       this.button24.Name = "button24";
       this.button24.Size = new System.Drawing.Size(45, 45);
       this.button24.TabIndex = 18;
@@ -668,7 +668,7 @@ namespace WinForm2048
       // 
       // button30
       // 
-      this.button30.Location = new System.Drawing.Point(319, 252);
+      this.button30.Location = new System.Drawing.Point(316, 252);
       this.button30.Name = "button30";
       this.button30.Size = new System.Drawing.Size(45, 45);
       this.button30.TabIndex = 28;
@@ -676,7 +676,7 @@ namespace WinForm2048
       // 
       // button31
       // 
-      this.button31.Location = new System.Drawing.Point(370, 252);
+      this.button31.Location = new System.Drawing.Point(367, 252);
       this.button31.Name = "button31";
       this.button31.Size = new System.Drawing.Size(45, 45);
       this.button31.TabIndex = 27;
@@ -684,7 +684,7 @@ namespace WinForm2048
       // 
       // button32
       // 
-      this.button32.Location = new System.Drawing.Point(421, 252);
+      this.button32.Location = new System.Drawing.Point(418, 252);
       this.button32.Name = "button32";
       this.button32.Size = new System.Drawing.Size(45, 45);
       this.button32.TabIndex = 26;
@@ -732,7 +732,7 @@ namespace WinForm2048
       // 
       // button38
       // 
-      this.button38.Location = new System.Drawing.Point(319, 303);
+      this.button38.Location = new System.Drawing.Point(316, 303);
       this.button38.Name = "button38";
       this.button38.Size = new System.Drawing.Size(45, 45);
       this.button38.TabIndex = 36;
@@ -740,7 +740,7 @@ namespace WinForm2048
       // 
       // button39
       // 
-      this.button39.Location = new System.Drawing.Point(370, 303);
+      this.button39.Location = new System.Drawing.Point(367, 303);
       this.button39.Name = "button39";
       this.button39.Size = new System.Drawing.Size(45, 45);
       this.button39.TabIndex = 35;
@@ -748,7 +748,7 @@ namespace WinForm2048
       // 
       // button40
       // 
-      this.button40.Location = new System.Drawing.Point(421, 303);
+      this.button40.Location = new System.Drawing.Point(418, 303);
       this.button40.Name = "button40";
       this.button40.Size = new System.Drawing.Size(45, 45);
       this.button40.TabIndex = 34;
@@ -796,7 +796,7 @@ namespace WinForm2048
       // 
       // button46
       // 
-      this.button46.Location = new System.Drawing.Point(319, 354);
+      this.button46.Location = new System.Drawing.Point(316, 354);
       this.button46.Name = "button46";
       this.button46.Size = new System.Drawing.Size(45, 45);
       this.button46.TabIndex = 44;
@@ -804,7 +804,7 @@ namespace WinForm2048
       // 
       // button47
       // 
-      this.button47.Location = new System.Drawing.Point(370, 354);
+      this.button47.Location = new System.Drawing.Point(367, 354);
       this.button47.Name = "button47";
       this.button47.Size = new System.Drawing.Size(45, 45);
       this.button47.TabIndex = 43;
@@ -812,7 +812,7 @@ namespace WinForm2048
       // 
       // button48
       // 
-      this.button48.Location = new System.Drawing.Point(421, 354);
+      this.button48.Location = new System.Drawing.Point(418, 354);
       this.button48.Name = "button48";
       this.button48.Size = new System.Drawing.Size(45, 45);
       this.button48.TabIndex = 42;
@@ -860,7 +860,7 @@ namespace WinForm2048
       // 
       // button54
       // 
-      this.button54.Location = new System.Drawing.Point(319, 405);
+      this.button54.Location = new System.Drawing.Point(316, 405);
       this.button54.Name = "button54";
       this.button54.Size = new System.Drawing.Size(45, 45);
       this.button54.TabIndex = 52;
@@ -868,7 +868,7 @@ namespace WinForm2048
       // 
       // button55
       // 
-      this.button55.Location = new System.Drawing.Point(370, 405);
+      this.button55.Location = new System.Drawing.Point(367, 405);
       this.button55.Name = "button55";
       this.button55.Size = new System.Drawing.Size(45, 45);
       this.button55.TabIndex = 51;
@@ -876,7 +876,7 @@ namespace WinForm2048
       // 
       // button56
       // 
-      this.button56.Location = new System.Drawing.Point(421, 405);
+      this.button56.Location = new System.Drawing.Point(418, 405);
       this.button56.Name = "button56";
       this.button56.Size = new System.Drawing.Size(45, 45);
       this.button56.TabIndex = 50;
@@ -924,7 +924,7 @@ namespace WinForm2048
       // 
       // button62
       // 
-      this.button62.Location = new System.Drawing.Point(319, 456);
+      this.button62.Location = new System.Drawing.Point(316, 456);
       this.button62.Name = "button62";
       this.button62.Size = new System.Drawing.Size(45, 45);
       this.button62.TabIndex = 60;
@@ -932,7 +932,7 @@ namespace WinForm2048
       // 
       // button63
       // 
-      this.button63.Location = new System.Drawing.Point(370, 456);
+      this.button63.Location = new System.Drawing.Point(367, 456);
       this.button63.Name = "button63";
       this.button63.Size = new System.Drawing.Size(45, 45);
       this.button63.TabIndex = 59;
@@ -940,7 +940,7 @@ namespace WinForm2048
       // 
       // button64
       // 
-      this.button64.Location = new System.Drawing.Point(421, 456);
+      this.button64.Location = new System.Drawing.Point(418, 456);
       this.button64.Name = "button64";
       this.button64.Size = new System.Drawing.Size(45, 45);
       this.button64.TabIndex = 58;
@@ -954,6 +954,7 @@ namespace WinForm2048
       this.buttonUp.TabIndex = 66;
       this.buttonUp.Text = "Up";
       this.buttonUp.UseVisualStyleBackColor = true;
+      this.buttonUp.Click += new System.EventHandler(this.ButtonUp_Click);
       // 
       // buttonDown
       // 
@@ -963,6 +964,7 @@ namespace WinForm2048
       this.buttonDown.TabIndex = 67;
       this.buttonDown.Text = "Down";
       this.buttonDown.UseVisualStyleBackColor = true;
+      this.buttonDown.Click += new System.EventHandler(this.ButtonDown_Click);
       // 
       // buttonLeft
       // 
@@ -972,6 +974,7 @@ namespace WinForm2048
       this.buttonLeft.TabIndex = 68;
       this.buttonLeft.Text = "Left";
       this.buttonLeft.UseVisualStyleBackColor = true;
+      this.buttonLeft.Click += new System.EventHandler(this.ButtonLeft_Click);
       // 
       // buttonRight
       // 
@@ -981,6 +984,7 @@ namespace WinForm2048
       this.buttonRight.TabIndex = 69;
       this.buttonRight.Text = "Right";
       this.buttonRight.UseVisualStyleBackColor = true;
+      this.buttonRight.Click += new System.EventHandler(this.ButtonRight_Click);
       // 
       // buttonStartNewGame
       // 

@@ -52,6 +52,15 @@ namespace WinForm2048
     private void FormMainLoad(object sender, EventArgs e)
     {
       LoadSettingsAtStartup();
+      DisableSwipeButtons();
+    }
+
+    private void DisableSwipeButtons()
+    {
+      buttonUp.Enabled = false;
+      buttonDown.Enabled = false;
+      buttonRight.Enabled = false;
+      buttonLeft.Enabled = false;
     }
 
     private void LoadSettingsAtStartup()
@@ -795,16 +804,329 @@ namespace WinForm2048
       int line = int.Parse(GenerateNewPosition().Split(':')[0]);
       int column = int.Parse(GenerateNewPosition().Split(':')[1]);
       board[line, column] = randomNumber;
-
+      Displayboard(line, column);
+      EnableSwipeMovement();
     }
 
-    private int GenerateNewRandomNumber()
+    private void EnableSwipeMovement()
     {
-      int result = 3;
-      do
+      buttonUp.Enabled = true;
+      buttonDown.Enabled = true;
+      buttonRight.Enabled = true;
+      buttonLeft.Enabled = true;
+      // button right
+      buttonRight.Enabled = NumberOfTileMovableToTheRight() > 0;
+      buttonLeft.Enabled = NumberOfTileMovableToTheLeft() > 0;
+      buttonUp.Enabled = NumberOfTileMovableUp() > 0;
+      buttonDown.Enabled = NumberOfTileMovableDown() > 0;
+    }
+
+    private int NumberOfTileMovableDown()
+    {
+      int result = 0;
+      for (int i = 1; i < 9; i++)
       {
-        result = GenerateRndNumberUsingCrypto(2, 4);
-      } while (result == 2 || result == 4);
+        for (int j = 1; j < 9; j++)
+        {
+          if (board[i, j] != 0 && i != 8 && board[i + 1, j] == 0)
+          {
+            result++;
+          }
+
+          if (i != 8 && board[i, j] == board[i + 1, j])
+          {
+            result++;
+          }
+        }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTileMovableUp()
+    {
+      int result = 0;
+      for (int i = 1; i < 9; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          if (board[i, j] != 0 && i != 1 && board[i - 1, j] == 0)
+          {
+            result++;
+          }
+
+          if (i != 1 && board[i, j] == board[i - 1, j])
+          {
+            result++;
+          }
+        }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTileMovableToTheLeft()
+    {
+      int result = 0;
+      for (int i = 1; i < 9; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          if (board[i, j] != 0 && j != 1 && board[i, j - 1] == 0)
+          {
+            result++;
+          }
+
+          if (j != 1 && board[i, j] == board[i, j - 1])
+          {
+            result++;
+          }
+        }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTileMovableToTheRight()
+    {
+      int result = 0;
+      for (int i = 1; i < 9; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          if (board[i, j] != 0 && j != 8 && board[i, j + 1] == 0)
+          {
+            result++;
+          }
+
+          if (j != 8 && board[i, j] == board[i, j + 1])
+          {
+            result++;
+          }
+        }
+      }
+
+      return result;
+    }
+
+    private void Displayboard(int line, int column)
+    {
+      switch ($"{line}:{column}")
+      {
+        case "1:1":
+          button1.Text = board[line, column].ToString();
+          break;
+        case "1:2":
+          button2.Text = board[line, column].ToString();
+          break;
+        case "1:3":
+          button3.Text = board[line, column].ToString();
+          break;
+        case "1:4":
+          button4.Text = board[line, column].ToString();
+          break;
+        case "1:5":
+          button5.Text = board[line, column].ToString();
+          break;
+        case "1:6":
+          button6.Text = board[line, column].ToString();
+          break;
+        case "1:7":
+          button7.Text = board[line, column].ToString();
+          break;
+        case "1:8":
+          button8.Text = board[line, column].ToString();
+          break;
+        case "2:1":
+          button9.Text = board[line, column].ToString();
+          break;
+        case "2:2":
+          button10.Text = board[line, column].ToString();
+          break;
+        case "2:3":
+          button11.Text = board[line, column].ToString();
+          break;
+        case "2:4":
+          button12.Text = board[line, column].ToString();
+          break;
+        case "2:5":
+          button13.Text = board[line, column].ToString();
+          break;
+        case "2:6":
+          button14.Text = board[line, column].ToString();
+          break;
+        case "2:7":
+          button15.Text = board[line, column].ToString();
+          break;
+        case "2:8":
+          button16.Text = board[line, column].ToString();
+          break;
+        case "3:1":
+          button17.Text = board[line, column].ToString();
+          break;
+        case "3:2":
+          button18.Text = board[line, column].ToString();
+          break;
+        case "3:3":
+          button19.Text = board[line, column].ToString();
+          break;
+        case "3:4":
+          button20.Text = board[line, column].ToString();
+          break;
+        case "3:5":
+          button21.Text = board[line, column].ToString();
+          break;
+        case "3:6":
+          button22.Text = board[line, column].ToString();
+          break;
+        case "3:7":
+          button23.Text = board[line, column].ToString();
+          break;
+        case "3:8":
+          button24.Text = board[line, column].ToString();
+          break;
+        case "4:1":
+          button25.Text = board[line, column].ToString();
+          break;
+        case "4:2":
+          button26.Text = board[line, column].ToString();
+          break;
+        case "4:3":
+          button27.Text = board[line, column].ToString();
+          break;
+        case "4:4":
+          button28.Text = board[line, column].ToString();
+          break;
+        case "4:5":
+          button29.Text = board[line, column].ToString();
+          break;
+        case "4:6":
+          button30.Text = board[line, column].ToString();
+          break;
+        case "4:7":
+          button31.Text = board[line, column].ToString();
+          break;
+        case "4:8":
+          button32.Text = board[line, column].ToString();
+          break;
+        case "5:1":
+          button33.Text = board[line, column].ToString();
+          break;
+        case "5:2":
+          button34.Text = board[line, column].ToString();
+          break;
+        case "5:3":
+          button35.Text = board[line, column].ToString();
+          break;
+        case "5:4":
+          button36.Text = board[line, column].ToString();
+          break;
+        case "5:5":
+          button37.Text = board[line, column].ToString();
+          break;
+        case "5:6":
+          button38.Text = board[line, column].ToString();
+          break;
+        case "5:7":
+          button39.Text = board[line, column].ToString();
+          break;
+        case "5:8":
+          button40.Text = board[line, column].ToString();
+          break;
+        case "6:1":
+          button41.Text = board[line, column].ToString();
+          break;
+        case "6:2":
+          button42.Text = board[line, column].ToString();
+          break;
+        case "6:3":
+          button43.Text = board[line, column].ToString();
+          break;
+        case "6:4":
+          button44.Text = board[line, column].ToString();
+          break;
+        case "6:5":
+          button45.Text = board[line, column].ToString();
+          break;
+        case "6:6":
+          button46.Text = board[line, column].ToString();
+          break;
+        case "6:7":
+          button47.Text = board[line, column].ToString();
+          break;
+        case "6:8":
+          button48.Text = board[line, column].ToString();
+          break;
+        case "7:1":
+          button49.Text = board[line, column].ToString();
+          break;
+        case "7:2":
+          button50.Text = board[line, column].ToString();
+          break;
+        case "7:3":
+          button51.Text = board[line, column].ToString();
+          break;
+        case "7:4":
+          button52.Text = board[line, column].ToString();
+          break;
+        case "7:5":
+          button53.Text = board[line, column].ToString();
+          break;
+        case "7:6":
+          button54.Text = board[line, column].ToString();
+          break;
+        case "7:7":
+          button55.Text = board[line, column].ToString();
+          break;
+        case "7:8":
+          button56.Text = board[line, column].ToString();
+          break;
+        case "8:1":
+          button57.Text = board[line, column].ToString();
+          break;
+        case "8:2":
+          button58.Text = board[line, column].ToString();
+          break;
+        case "8:3":
+          button59.Text = board[line, column].ToString();
+          break;
+        case "8:4":
+          button60.Text = board[line, column].ToString();
+          break;
+        case "8:5":
+          button61.Text = board[line, column].ToString();
+          break;
+        case "8:6":
+          button62.Text = board[line, column].ToString();
+          break;
+        case "8:7":
+          button63.Text = board[line, column].ToString();
+          break;
+        case "8:8":
+          button64.Text = board[line, column].ToString();
+          break;
+        default:
+          // don't do anything because outside the board
+          break;
+      }
+    }
+
+    public static int GenerateNewRandomNumber()
+    {
+      int result = GenerateRndNumberUsingCrypto(1, 254);
+      if (result % 2 == 0)
+      {
+        result = 4;
+      }
+      else
+      {
+        result = 2;
+      }
+
+      //do
+      //{
+      //  result = GenerateRndNumberUsingCrypto(1, 254);
+      //} while (result != 2 || result != 4);
 
       return result;
     }
@@ -846,6 +1168,51 @@ namespace WinForm2048
       } while (result < min || result > max);
 
       return result;
+    }
+
+    private void ButtonUp_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonDown_Click(object sender, EventArgs e)
+    {
+      // move all tiles down when possible
+      for (int column = 1; column < 9; column++)
+      {
+        for (int line = 8; line > 1; line--)
+        {
+          if (board[line, column] == board[line - 1, column])
+          {
+            MoveTilesDown(line, column);
+
+          }
+        }
+      }
+    }
+
+    private void MoveTilesDown(int line, int column)
+    {
+      board[line, column] *= 2;
+      // move other tiles down
+      // TODO
+      for (int i = line - 1; i > 1; i--)
+      {
+        if (board[i, column] == 0)
+        {
+
+        }
+      }
+    }
+
+    private void ButtonRight_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonLeft_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }
