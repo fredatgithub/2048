@@ -19,5 +19,7 @@
     public int NumberOfTilePerColumn { get; set; }
     public int NumberOfTilePerLine { get; set; }
 
+    public int PositionOfAColumn { get; set; }
+    public int PositionOfALine { get; set; }
   }
 }
