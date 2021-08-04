@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -1114,19 +1115,26 @@ namespace WinForm2048
     public static int GenerateNewRandomNumber()
     {
       int result = GenerateRndNumberUsingCrypto(1, 254);
-      if (result % 2 == 0)
-      {
-        result = 4;
-      }
-      else
+      // more twos than fours
+      if (result < 245)
       {
         result = 2;
       }
+      else
+      {
+        result = 4;
+      }
 
-      //do
+      //if (result % 2 == 0)
       //{
-      //  result = GenerateRndNumberUsingCrypto(1, 254);
-      //} while (result != 2 || result != 4);
+      //  result = 4;
+      //}
+      //else
+      //{
+      //  result = 2;
+      //}
+
+
 
       return result;
     }
@@ -1200,7 +1208,7 @@ namespace WinForm2048
       {
         if (board[i, column] == 0)
         {
-
+          // TODO
         }
       }
     }
@@ -1213,6 +1221,64 @@ namespace WinForm2048
     private void ButtonLeft_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private void ColorizeBackgroundTile(int line, int column)
+    {
+      Color backgroundColor = ColorizeTile(board[line, column]);
+      switch ($"{line}:{column}")
+      {
+        case "1:1":
+          button1.BackColor = backgroundColor;
+          break;
+        case "1:2":
+          button2.BackColor = backgroundColor;
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    public static Color ColorizeTile(int number)
+    {
+      switch (number)
+      {
+        case 2:
+          return Color.White;
+        case 4:
+          return Color.FromArgb(50, 50, 50);
+        case 8:
+          return Color.Orange;
+        case 16:
+          return Color.OrangeRed;
+        case 32:
+          return Color.DarkOrange;
+        case 64:
+          return Color.IndianRed;
+        case 128:
+          return Color.Yellow;
+        case 256:
+          return Color.YellowGreen;
+        case 512:
+          return Color.LightYellow;
+        case 1024:
+          return Color.LightGoldenrodYellow;
+        case 2048:
+          return Color.GreenYellow;
+        case 4096:
+          return Color.Green;
+        case 8192:
+          return Color.LightGreen;
+        case 16384:
+          return Color.ForestGreen;
+        case 32768:
+          return Color.DarkOliveGreen;
+        case 65536:
+          return Color.DarkSeaGreen;
+        default:
+          return Color.White;
+      }
     }
   }
 }

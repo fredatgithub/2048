@@ -21,5 +21,7 @@
 
     public int PositionOfAColumn { get; set; }
     public int PositionOfALine { get; set; }
+
   }
 }
+
