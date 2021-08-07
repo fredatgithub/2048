@@ -1125,17 +1125,6 @@ namespace WinForm2048
         result = 4;
       }
 
-      //if (result % 2 == 0)
-      //{
-      //  result = 4;
-      //}
-      //else
-      //{
-      //  result = 2;
-      //}
-
-
-
       return result;
     }
 
