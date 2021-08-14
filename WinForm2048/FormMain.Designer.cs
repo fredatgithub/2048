@@ -135,6 +135,8 @@ namespace WinForm2048
       this.buttonLeft = new System.Windows.Forms.Button();
       this.buttonRight = new System.Windows.Forms.Button();
       this.buttonStartNewGame = new System.Windows.Forms.Button();
+      this.labelScore = new System.Windows.Forms.Label();
+      this.labelHighestScore = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -996,11 +998,33 @@ namespace WinForm2048
       this.buttonStartNewGame.UseVisualStyleBackColor = true;
       this.buttonStartNewGame.Click += new System.EventHandler(this.ButtonStartNewGame_Click);
       // 
+      // labelScore
+      // 
+      this.labelScore.AutoSize = true;
+      this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelScore.Location = new System.Drawing.Point(121, 64);
+      this.labelScore.Name = "labelScore";
+      this.labelScore.Size = new System.Drawing.Size(83, 20);
+      this.labelScore.TabIndex = 71;
+      this.labelScore.Text = "SCORE: 0";
+      // 
+      // labelHighestScore
+      // 
+      this.labelHighestScore.AutoSize = true;
+      this.labelHighestScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelHighestScore.Location = new System.Drawing.Point(300, 64);
+      this.labelHighestScore.Name = "labelHighestScore";
+      this.labelHighestScore.Size = new System.Drawing.Size(160, 20);
+      this.labelHighestScore.TabIndex = 72;
+      this.labelHighestScore.Text = "HIGHEST SCORE: 0";
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(683, 578);
+      this.Controls.Add(this.labelHighestScore);
+      this.Controls.Add(this.labelScore);
       this.Controls.Add(this.buttonStartNewGame);
       this.Controls.Add(this.buttonRight);
       this.Controls.Add(this.buttonLeft);
@@ -1193,5 +1217,7 @@ namespace WinForm2048
     private System.Windows.Forms.Button buttonLeft;
     private System.Windows.Forms.Button buttonRight;
     private System.Windows.Forms.Button buttonStartNewGame;
+    private System.Windows.Forms.Label labelScore;
+    private System.Windows.Forms.Label labelHighestScore;
   }
 }

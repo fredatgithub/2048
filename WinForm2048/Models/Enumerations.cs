@@ -7,7 +7,6 @@
       Small = 1,
       Medium,
       High
-
     }
   }
 }

@@ -300,6 +300,8 @@ namespace WinForm2048
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      labelScore.Text = $"SCORE: {Settings.Default.Score}";
+      labelHighestScore.Text = $"HIGHEST SCORE: {Settings.Default.HighestScore}";
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -311,6 +313,8 @@ namespace WinForm2048
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
+      Settings.Default.Score = labelScore.Text;
+      Settings.Default.HighestScore = labelHighestScore.Text;
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       SaveConfigurationOptions();
       Settings.Default.Save();
@@ -726,6 +730,67 @@ namespace WinForm2048
 
     private void ButtonStartNewGame_Click(object sender, EventArgs e)
     {
+      EmptyAllbuttonText();
+      InitializationOfTheBoard();
+
+      // generate a new number
+      int randomNumber = GenerateNewRandomNumber();
+      int line = int.Parse(GenerateNewPosition().Split(':')[0]);
+      int column = int.Parse(GenerateNewPosition().Split(':')[1]);
+      board[line, column] = randomNumber;
+      Displayboard(line, column);
+      EnableSwipeMovement();
+      DropTiles();
+    }
+
+    private void DropTiles()
+    {
+      //MoveTilesDown();
+      //for (int i = 1; i < 9; i++)
+      //{
+      //  for (int j = 1; j < 9; j++)
+      //  {
+      //    if (board[i, j] != 0 && i != 8 && board[i + 1, j] == 0)
+      //    {
+
+      //    }
+
+      //    if (i != 8 && board[i, j] == board[i + 1, j])
+      //    {
+
+      //    }
+      //  }
+    }
+
+    /// <summary>
+    /// Initialization of the board, all tiles will be set to zero.
+    /// </summary>
+    private void InitializationOfTheBoard()
+    {
+      for (int i = 1; i < 9; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          board[i, j] = 0;
+        }
+      }
+    }
+
+    private void EnableSwipeMovement()
+    {
+      buttonUp.Enabled = true;
+      buttonDown.Enabled = true;
+      buttonRight.Enabled = true;
+      buttonLeft.Enabled = true;
+      // button right
+      buttonRight.Enabled = NumberOfTileMovableToTheRight() > 0;
+      buttonLeft.Enabled = NumberOfTileMovableToTheLeft() > 0;
+      buttonUp.Enabled = NumberOfTileMovableUp() > 0;
+      buttonDown.Enabled = NumberOfTileMovableDown() > 0;
+    }
+
+    private void EmptyAllbuttonText()
+    {
       button1.Text = string.Empty;
       button2.Text = string.Empty;
       button3.Text = string.Empty;
@@ -790,36 +855,6 @@ namespace WinForm2048
       button62.Text = string.Empty;
       button63.Text = string.Empty;
       button64.Text = string.Empty;
-
-      // Initialization of the board
-      for (int i = 1; i < 9; i++)
-      {
-        for (int j = 1; j < 9; j++)
-        {
-          board[i, j] = 0;
-        }
-      }
-
-      // generate a new number
-      int randomNumber = GenerateNewRandomNumber();
-      int line = int.Parse(GenerateNewPosition().Split(':')[0]);
-      int column = int.Parse(GenerateNewPosition().Split(':')[1]);
-      board[line, column] = randomNumber;
-      Displayboard(line, column);
-      EnableSwipeMovement();
-    }
-
-    private void EnableSwipeMovement()
-    {
-      buttonUp.Enabled = true;
-      buttonDown.Enabled = true;
-      buttonRight.Enabled = true;
-      buttonLeft.Enabled = true;
-      // button right
-      buttonRight.Enabled = NumberOfTileMovableToTheRight() > 0;
-      buttonLeft.Enabled = NumberOfTileMovableToTheLeft() > 0;
-      buttonUp.Enabled = NumberOfTileMovableUp() > 0;
-      buttonDown.Enabled = NumberOfTileMovableDown() > 0;
     }
 
     private int NumberOfTileMovableDown()
