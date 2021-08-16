@@ -134,9 +134,9 @@ namespace WinForm2048.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string Score {
+        public int Score {
             get {
-                return ((string)(this["Score"]));
+                return ((int)(this["Score"]));
             }
             set {
                 this["Score"] = value;
@@ -146,9 +146,9 @@ namespace WinForm2048.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string HighestScore {
+        public int HighestScore {
             get {
-                return ((string)(this["HighestScore"]));
+                return ((int)(this["HighestScore"]));
             }
             set {
                 this["HighestScore"] = value;

@@ -24,7 +24,9 @@ namespace WinForm2048
     public readonly Dictionary<string, string> LanguageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
-    int[,] board = new int[9, 9];
+    private int[,] board = new int[9, 9];
+    private int score = 0;
+    private int highestScore = 0;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -301,7 +303,9 @@ namespace WinForm2048
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       labelScore.Text = $"SCORE: {Settings.Default.Score}";
+      score = Settings.Default.Score;
       labelHighestScore.Text = $"HIGHEST SCORE: {Settings.Default.HighestScore}";
+      highestScore = Settings.Default.HighestScore;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -313,8 +317,10 @@ namespace WinForm2048
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
-      Settings.Default.Score = labelScore.Text;
-      Settings.Default.HighestScore = labelHighestScore.Text;
+      Settings.Default.Score = int.Parse(labelScore.Text.Substring(7, labelScore.Text.Length - 7));
+      int initialLength = "HIGHEST SCORE: ".Length;
+      int length = labelHighestScore.Text.Length - "HIGHEST SCORE: ".Length;
+      Settings.Default.HighestScore = int.Parse(labelHighestScore.Text.Substring(initialLength, length));
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       SaveConfigurationOptions();
       Settings.Default.Save();
@@ -778,14 +784,29 @@ namespace WinForm2048
 
     private void EnableSwipeMovement()
     {
-      buttonUp.Enabled = true;
-      buttonDown.Enabled = true;
-      buttonRight.Enabled = true;
-      buttonLeft.Enabled = true;
-      // button right
+      buttonUp.Enabled = false;
+      buttonDown.Enabled = false;
+      buttonRight.Enabled = false;
+      buttonLeft.Enabled = false;
+      labelRight.Text = NumberOfTileMovableToTheRight().ToString();
       buttonRight.Enabled = NumberOfTileMovableToTheRight() > 0;
+
+      labelLeft.Text = NumberOfTileMovableToTheLeft().ToString();
       buttonLeft.Enabled = NumberOfTileMovableToTheLeft() > 0;
-      buttonUp.Enabled = NumberOfTileMovableUp() > 0;
+
+      labelUp.Text = NumberOfTileMovableUp().ToString();
+      if (NumberOfTileMovableUp() > 0)
+      {
+        buttonUp.Enabled = true;
+      }
+      else
+      {
+        buttonUp.Enabled = false;
+      }
+
+      //buttonUp.Enabled = NumberOfTileMovableUp() > 0;
+
+      labelDown.Text = NumberOfTileMovableDown().ToString();
       buttonDown.Enabled = NumberOfTileMovableDown() > 0;
     }
 
@@ -882,6 +903,11 @@ namespace WinForm2048
     private int NumberOfTileMovableUp()
     {
       int result = 0;
+      if (NumberOfTileInTopRow() == 0) // false to be fixed
+      {
+        return result;
+      }
+
       for (int i = 1; i < 9; i++)
       {
         for (int j = 1; j < 9; j++)
@@ -896,6 +922,21 @@ namespace WinForm2048
             result++;
           }
         }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTileInTopRow()
+    {
+      int result = 0;
+      for (int i = 1; i <= 8; i++)
+      {
+        if (board[i, 1] == 0 || board[i, 1] == board[i, 2])
+        {
+          result++;
+        }
+
       }
 
       return result;

@@ -137,6 +137,10 @@ namespace WinForm2048
       this.buttonStartNewGame = new System.Windows.Forms.Button();
       this.labelScore = new System.Windows.Forms.Label();
       this.labelHighestScore = new System.Windows.Forms.Label();
+      this.labelUp = new System.Windows.Forms.Label();
+      this.labelDown = new System.Windows.Forms.Label();
+      this.labelLeft = new System.Windows.Forms.Label();
+      this.labelRight = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -950,7 +954,7 @@ namespace WinForm2048
       // 
       // buttonUp
       // 
-      this.buttonUp.Location = new System.Drawing.Point(541, 201);
+      this.buttonUp.Location = new System.Drawing.Point(541, 226);
       this.buttonUp.Name = "buttonUp";
       this.buttonUp.Size = new System.Drawing.Size(45, 45);
       this.buttonUp.TabIndex = 66;
@@ -960,7 +964,7 @@ namespace WinForm2048
       // 
       // buttonDown
       // 
-      this.buttonDown.Location = new System.Drawing.Point(541, 303);
+      this.buttonDown.Location = new System.Drawing.Point(541, 277);
       this.buttonDown.Name = "buttonDown";
       this.buttonDown.Size = new System.Drawing.Size(45, 45);
       this.buttonDown.TabIndex = 67;
@@ -990,9 +994,10 @@ namespace WinForm2048
       // 
       // buttonStartNewGame
       // 
+      this.buttonStartNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonStartNewGame.Location = new System.Drawing.Point(61, 48);
       this.buttonStartNewGame.Name = "buttonStartNewGame";
-      this.buttonStartNewGame.Size = new System.Drawing.Size(45, 45);
+      this.buttonStartNewGame.Size = new System.Drawing.Size(54, 45);
       this.buttonStartNewGame.TabIndex = 70;
       this.buttonStartNewGame.Text = "New Game";
       this.buttonStartNewGame.UseVisualStyleBackColor = true;
@@ -1001,28 +1006,68 @@ namespace WinForm2048
       // labelScore
       // 
       this.labelScore.AutoSize = true;
-      this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelScore.Location = new System.Drawing.Point(121, 64);
       this.labelScore.Name = "labelScore";
-      this.labelScore.Size = new System.Drawing.Size(83, 20);
+      this.labelScore.Size = new System.Drawing.Size(91, 20);
       this.labelScore.TabIndex = 71;
       this.labelScore.Text = "SCORE: 0";
       // 
       // labelHighestScore
       // 
       this.labelHighestScore.AutoSize = true;
-      this.labelHighestScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelHighestScore.Location = new System.Drawing.Point(300, 64);
+      this.labelHighestScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelHighestScore.Location = new System.Drawing.Point(284, 64);
       this.labelHighestScore.Name = "labelHighestScore";
-      this.labelHighestScore.Size = new System.Drawing.Size(160, 20);
+      this.labelHighestScore.Size = new System.Drawing.Size(176, 20);
       this.labelHighestScore.TabIndex = 72;
       this.labelHighestScore.Text = "HIGHEST SCORE: 0";
+      // 
+      // labelUp
+      // 
+      this.labelUp.AutoSize = true;
+      this.labelUp.Location = new System.Drawing.Point(557, 203);
+      this.labelUp.Name = "labelUp";
+      this.labelUp.Size = new System.Drawing.Size(13, 13);
+      this.labelUp.TabIndex = 73;
+      this.labelUp.Text = "0";
+      // 
+      // labelDown
+      // 
+      this.labelDown.AutoSize = true;
+      this.labelDown.Location = new System.Drawing.Point(557, 335);
+      this.labelDown.Name = "labelDown";
+      this.labelDown.Size = new System.Drawing.Size(13, 13);
+      this.labelDown.TabIndex = 74;
+      this.labelDown.Text = "0";
+      // 
+      // labelLeft
+      // 
+      this.labelLeft.AutoSize = true;
+      this.labelLeft.Location = new System.Drawing.Point(469, 269);
+      this.labelLeft.Name = "labelLeft";
+      this.labelLeft.Size = new System.Drawing.Size(13, 13);
+      this.labelLeft.TabIndex = 75;
+      this.labelLeft.Text = "0";
+      // 
+      // labelRight
+      // 
+      this.labelRight.AutoSize = true;
+      this.labelRight.Location = new System.Drawing.Point(645, 269);
+      this.labelRight.Name = "labelRight";
+      this.labelRight.Size = new System.Drawing.Size(13, 13);
+      this.labelRight.TabIndex = 76;
+      this.labelRight.Text = "0";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(683, 578);
+      this.Controls.Add(this.labelRight);
+      this.Controls.Add(this.labelLeft);
+      this.Controls.Add(this.labelDown);
+      this.Controls.Add(this.labelUp);
       this.Controls.Add(this.labelHighestScore);
       this.Controls.Add(this.labelScore);
       this.Controls.Add(this.buttonStartNewGame);
@@ -1219,5 +1264,9 @@ namespace WinForm2048
     private System.Windows.Forms.Button buttonStartNewGame;
     private System.Windows.Forms.Label labelScore;
     private System.Windows.Forms.Label labelHighestScore;
+    private System.Windows.Forms.Label labelUp;
+    private System.Windows.Forms.Label labelDown;
+    private System.Windows.Forms.Label labelLeft;
+    private System.Windows.Forms.Label labelRight;
   }
 }

@@ -29,10 +29,10 @@
     <Setting Name="WindowWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1024</Value>
     </Setting>
-    <Setting Name="Score" Type="System.String" Scope="User">
+    <Setting Name="Score" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="HighestScore" Type="System.String" Scope="User">
+    <Setting Name="HighestScore" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
