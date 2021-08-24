@@ -2,9 +2,11 @@
 {
   public partial class Enumerations
   {
-    public Enumerations()
+    public enum Difficulty
     {
-
+      Small = 1,
+      Medium,
+      High
     }
   }
 }

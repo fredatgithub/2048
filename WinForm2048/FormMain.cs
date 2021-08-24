@@ -20,8 +20,8 @@ namespace WinForm2048
       InitializeComponent();
     }
 
-    public readonly Dictionary<string, string> LanguageDicoEn = new Dictionary<string, string>();
-    public readonly Dictionary<string, string> LanguageDicoFr = new Dictionary<string, string>();
+    internal readonly Dictionary<string, string> LanguageDicoEn = new Dictionary<string, string>();
+    internal readonly Dictionary<string, string> LanguageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private int[,] board = new int[9, 9];
@@ -82,8 +82,9 @@ namespace WinForm2048
 
     private void SaveConfigurationOptions()
     {
-      _configurationOptions.Option1Name = Settings.Default.Option1Name;
-      _configurationOptions.Option2Name = Settings.Default.Option2Name;
+      // TODO adapt accordingly
+      //_configurationOptions.Option1Name = Settings.Default.Option1Name;
+      //_configurationOptions.Option2Name = Settings.Default.Option2Name;
     }
 
     private void LoadLanguages()
