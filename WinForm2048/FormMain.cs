@@ -882,6 +882,12 @@ namespace WinForm2048
     private int NumberOfTileMovableDown()
     {
       int result = 0;
+      if (NumberOfTilesinColumn() == 0)
+      {
+        return result;
+      }
+
+
       for (int i = 1; i < 9; i++)
       {
         for (int j = 1; j < 9; j++)
@@ -895,6 +901,34 @@ namespace WinForm2048
           {
             result++;
           }
+        }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTilesinColumn(int columnNumber)
+    {
+      int result = 0;
+      for (int i = 1; i <= 8; i++)
+      {
+        if (board[columnNumber, i] != 0)
+        {
+          result++;
+        }
+      }
+
+      return result;
+    }
+
+    private int NumberOfTilesinLine(int lineNumber)
+    {
+      int result = 0;
+      for (int i = 1; i <= 8; i++)
+      {
+        if (board[i, lineNumber] != 0)
+        {
+          result++;
         }
       }
 

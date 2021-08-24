@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace WinForm2048
 {
@@ -38,17 +39,18 @@ namespace WinForm2048
     public const string ExclamationPoint = "!";
     public const string Chapter = "§";
     public const string Micro = "µ";
-    public static string CrLf = Environment.NewLine;
+    private static readonly string newLine = Environment.NewLine;
+    public static string CrLf = newLine;
 
     public static string Tabulate(ushort numberOfTabulation = 1)
     {
-      string result = string.Empty;
+      StringBuilder result = new StringBuilder();
       for (int number = 0; number < numberOfTabulation; number++)
       {
-        result += " ";
+        result.Append(" ");
       }
 
-      return result;
+      return result.ToString();
     }
   }
 }
