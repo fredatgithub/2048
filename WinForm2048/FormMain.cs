@@ -882,11 +882,10 @@ namespace WinForm2048
     private int NumberOfTileMovableDown()
     {
       int result = 0;
-      if (NumberOfTilesinColumn() == 0)
-      {
-        return result;
-      }
-
+      //if (NumberOfTilesinColumn(1) == 0)
+      //{
+      //  return result;
+      //}
 
       for (int i = 1; i < 9; i++)
       {
