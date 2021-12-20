@@ -742,11 +742,12 @@ namespace WinForm2048
 
       // generate a new number
       int randomNumber = GenerateNewRandomNumber();
-      int line = int.Parse(GenerateNewPosition().Split(':')[0]);
-      int column = int.Parse(GenerateNewPosition().Split(':')[1]);
+      string newLineAndColumn = GenerateNewPosition();
+      int line = int.Parse(newLineAndColumn.Split(':')[0]);
+      int column = int.Parse(newLineAndColumn.Split(':')[1]);
       board[line, column] = randomNumber;
       Displayboard(line, column);
-      EnableSwipeMovement();
+      EnableSwipeMovement(line, column);
       DropTiles();
     }
 
@@ -783,32 +784,24 @@ namespace WinForm2048
       }
     }
 
-    private void EnableSwipeMovement()
+    private void EnableSwipeMovement(int line, int column)
     {
       buttonUp.Enabled = false;
       buttonDown.Enabled = false;
       buttonRight.Enabled = false;
       buttonLeft.Enabled = false;
-      labelRight.Text = NumberOfTileMovableToTheRight().ToString();
-      buttonRight.Enabled = NumberOfTileMovableToTheRight() > 0;
 
-      labelLeft.Text = NumberOfTileMovableToTheLeft().ToString();
-      buttonLeft.Enabled = NumberOfTileMovableToTheLeft() > 0;
+      labelRight.Text = NumberOfTileMovableToTheRight(column).ToString();
+      buttonRight.Enabled = NumberOfTileMovableToTheRight(column) > 0;
 
-      labelUp.Text = NumberOfTileMovableUp().ToString();
-      if (NumberOfTileMovableUp() > 0)
-      {
-        buttonUp.Enabled = true;
-      }
-      else
-      {
-        buttonUp.Enabled = false;
-      }
+      labelLeft.Text = NumberOfTileMovableToTheLeft(column).ToString();
+      buttonLeft.Enabled = NumberOfTileMovableToTheLeft(column) > 0;
 
-      //buttonUp.Enabled = NumberOfTileMovableUp() > 0;
+      labelUp.Text = NumberOfTileMovableUp(line).ToString();
+      buttonUp.Enabled = NumberOfTileMovableUp(line) > 0;
 
-      labelDown.Text = NumberOfTileMovableDown().ToString();
-      buttonDown.Enabled = NumberOfTileMovableDown() > 0;
+      labelDown.Text = NumberOfTileMovableDown(line).ToString();
+      buttonDown.Enabled = NumberOfTileMovableDown(line) > 0;
     }
 
     private void EmptyAllbuttonText()
@@ -879,28 +872,22 @@ namespace WinForm2048
       button64.Text = string.Empty;
     }
 
-    private int NumberOfTileMovableDown()
+    private int NumberOfTileMovableDown(int lineNumber)
     {
       int result = 0;
-      //if (NumberOfTilesinColumn(1) == 0)
-      //{
-      //  return result;
-      //}
 
-      for (int i = 1; i < 9; i++)
+      for (int i = lineNumber; i < 9; i++)
       {
-        for (int j = 1; j < 9; j++)
+        if (board[i, lineNumber] != 0 && i != 8 && board[i + 1, lineNumber] == 0)
         {
-          if (board[i, j] != 0 && i != 8 && board[i + 1, j] == 0)
-          {
-            result++;
-          }
-
-          if (i != 8 && board[i, j] == board[i + 1, j])
-          {
-            result++;
-          }
+          result++;
         }
+
+        if (i != 8 && board[i, lineNumber] == board[i + 1, lineNumber])
+        {
+          result++;
+        }
+
       }
 
       return result;
@@ -934,28 +921,22 @@ namespace WinForm2048
       return result;
     }
 
-    private int NumberOfTileMovableUp()
+    private int NumberOfTileMovableUp(int lineNumber)
     {
       int result = 0;
-      if (NumberOfTileInTopRow() == 0) // false to be fixed
-      {
-        return result;
-      }
 
-      for (int i = 1; i < 9; i++)
+      for (int i = lineNumber; i >= 1; i--)
       {
-        for (int j = 1; j < 9; j++)
+        if (board[i, lineNumber] != 0 && i != 1 && board[i - 1, lineNumber] == 0)
         {
-          if (board[i, j] != 0 && i != 1 && board[i - 1, j] == 0)
-          {
-            result++;
-          }
-
-          if (i != 1 && board[i, j] == board[i - 1, j])
-          {
-            result++;
-          }
+          result++;
         }
+
+        if (i != 1 && board[i, lineNumber] == board[i - 1, lineNumber])
+        {
+          result++;
+        }
+
       }
 
       return result;
@@ -976,46 +957,42 @@ namespace WinForm2048
       return result;
     }
 
-    private int NumberOfTileMovableToTheLeft()
+    private int NumberOfTileMovableToTheLeft(int columnNumber)
     {
       int result = 0;
-      for (int i = 1; i < 9; i++)
+      for (int j = columnNumber; j >= 1; j--)
       {
-        for (int j = 1; j < 9; j++)
+        if (board[columnNumber, j] != 0 && j != 1 && board[columnNumber, j - 1] == 0)
         {
-          if (board[i, j] != 0 && j != 1 && board[i, j - 1] == 0)
-          {
-            result++;
-          }
+          result++;
+        }
 
-          if (j != 1 && board[i, j] == board[i, j - 1])
-          {
-            result++;
-          }
+        if (j != 1 && board[columnNumber, j] == board[columnNumber, j - 1])
+        {
+          result++;
         }
       }
+
 
       return result;
     }
 
-    private int NumberOfTileMovableToTheRight()
+    private int NumberOfTileMovableToTheRight(int columnNumber)
     {
       int result = 0;
-      for (int i = 1; i < 9; i++)
+      for (int j = columnNumber; j < 9; j++)
       {
-        for (int j = 1; j < 9; j++)
+        if (board[columnNumber, j] != 0 && j != 8 && board[columnNumber, j + 1] == 0)
         {
-          if (board[i, j] != 0 && j != 8 && board[i, j + 1] == 0)
-          {
-            result++;
-          }
+          result++;
+        }
 
-          if (j != 8 && board[i, j] == board[i, j + 1])
-          {
-            result++;
-          }
+        if (j != 8 && board[columnNumber, j] == board[columnNumber, j + 1])
+        {
+          result++;
         }
       }
+
 
       return result;
     }
@@ -1217,7 +1194,7 @@ namespace WinForm2048
           button64.Text = board[line, column].ToString();
           break;
         default:
-          // don't do anything because outside the board
+          // don't do anything because we are outside the board
           break;
       }
     }
