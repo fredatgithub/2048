@@ -2,9 +2,12 @@
 {
   public partial class Enumerations
   {
-    public Enumerations()
+    public enum Direction
     {
-
+      Up = 0,
+      Right,
+      Down, 
+      Left
     }
   }
 }
